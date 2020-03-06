@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Controller from '../src/screens/Controller'
 import * as serviceWorker from './serviceWorker';
-
+// var cors = require('cors');
 ReactDOM.render(
-    <div>
-        Food Ordering App
-    </div>,
+    <Controller />,
     document.getElementById('root')
+     
 );
 
 // If you want your app to work offline and load faster, you can change
