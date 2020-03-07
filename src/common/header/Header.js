@@ -174,22 +174,25 @@ class Header extends Component {
         });
         sessionStorage.setItem("uuid", user.id);
         sessionStorage.setItem("loggedInUserName", user.firstName);
-        sessionStorage.setItem(
-          "access-token",
+        sessionStorage.setItem("access-token",
           xhrLogin.getResponseHeader("access-token")
         );
+         
         that.closeModalHandler();
+         
+        
       } else {
         that.setState({ errorResponse: this.responseText });
       }
     });
+    
     let data =
       "contactNumber=" +
       this.state.username +
       "&password=" +
       this.state.loginPassword;
     xhrLogin.open("POST", this.props.baseUrl + loginPath + "?" + data);
-    //xhrLogin.setRequestHeader("Authorization", "Basic " + window.btoa(this.state.username + ":" + this.state.loginPassword));
+    xhrLogin.setRequestHeader("Authorization", "Basic " + window.btoa(this.state.username + ":" + this.state.loginPassword));
     xhrLogin.setRequestHeader("Content-Type", "application/json");
     xhrLogin.setRequestHeader("Cache-Control", "no-cache");
     xhrLogin.send(dataLogin);
